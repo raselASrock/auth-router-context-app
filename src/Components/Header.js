@@ -5,7 +5,7 @@ import { AuthContext } from "../Context/UserContext";
 
 const Header = () => {
   const {user} = useContext(AuthContext);
-  console.log("Context:", user);
+  
   return (
     <div>
       <div className="navbar bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ...">
