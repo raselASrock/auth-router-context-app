@@ -11,4 +11,5 @@
 //---------Auth Integration------------ 
 /* 
 1. use getAuth by passing the app from firebase config file
+2. create a function named createUser to return createUserWithEmailAndPassword
 */

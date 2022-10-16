@@ -1,7 +1,13 @@
+import { error } from "daisyui/src/colors";
 import React from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Context/UserContext";
 
 const Register = () => {
+const {createUser} = useContext(AuthContext)
+  console.log("Create User",createUser);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -9,6 +15,12 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(name, email, password);
+      createUser(email, password)
+      .then(result =>{
+        const user = result.user;
+        console.log("Registerd User:", user);
+      })
+      .catch( error => console.error("Error", error))
   };
 
   return (
