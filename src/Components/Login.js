@@ -1,4 +1,4 @@
-import { error } from "daisyui/src/colors";
+
 import React from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
@@ -18,6 +18,7 @@ const handleSubmit = event =>{
     .then(result =>{
       const user = result.user;
       console.log(user);
+      form.reset();
     })
     .catch( error => console.error(error))
 
