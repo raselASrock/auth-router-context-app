@@ -20,8 +20,15 @@ const handleSignOut = () =>{
         <Link className="btn btn-ghost normal-case text-xl text-white" to='/'>Home</Link>
         <Link className="btn btn-ghost normal-case text-xl text-white" to='/login'>Log In</Link>
         <Link className="btn btn-ghost normal-case text-xl text-white" to='/register'>Register</Link>
-        {user?.email && <span>Welcome {user.email}</span>}
-        <button onClick={handleSignOut} className="btn btn-ghost normal-case text-xl text-white">Log Out</button>
+        {user?.email && <span className="text-white">Welcome {user.email}</span>}
+        {
+          user?.email ?
+          <button onClick={handleSignOut} className="btn btn-ghost normal-case text-xl text-white">Log Out</button>
+          :
+          <Link to='/login'>
+            <button className="btn btn-ghost normal-case text-xl text-white">Log In</button>
+            </Link>
+        }
       </div>
     </div>
   );

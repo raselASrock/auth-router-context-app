@@ -41,7 +41,7 @@ const signInWithGoogle = () =>{
 
     }, [])
 
-    const authInfo = {user, createUser, signIn, logOut}
+    const authInfo = {user, createUser, signIn, logOut, signInWithGoogle}
 
     return (
         <AuthContext.Provider value={authInfo}>
