@@ -1,37 +1,37 @@
-
-import { error } from "daisyui/src/colors";
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../Context/UserContext";
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../contexts/UserContext';
 
 const Header = () => {
-  const {user, logOut} = useContext(AuthContext);
-const handleSignOut = () =>{
-    logOut()
-    .then(() =>{})
-    .catch( error => console.error(error))
-}
+    const { user, logOut } = useContext(AuthContext);
+    console.log('context', user);
 
-  
-  return (
-    <div>
-      <div className="navbar bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ...">
-        <Link className="btn btn-ghost normal-case text-xl text-white" to='/'>Awesome Auth</Link>
-        <Link className="btn btn-ghost normal-case text-xl text-white" to='/'>Home</Link>
-        <Link className="btn btn-ghost normal-case text-xl text-white" to='/login'>Log In</Link>
-        <Link className="btn btn-ghost normal-case text-xl text-white" to='/register'>Register</Link>
-        {user?.email && <span className="text-white">Welcome {user.email}</span>}
-        {
-          user?.email ?
-          <button onClick={handleSignOut} className="btn btn-ghost normal-case text-xl text-white">Log Out</button>
-          :
-          <Link to='/login'>
-            <button className="btn btn-ghost normal-case text-xl text-white">Log In</button>
-            </Link>
-        }
-      </div>
-    </div>
-  );
+    const handleSignOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error));
+    }
+
+    return (
+        <div>
+            <div className="navbar bg-primary text-primary-content">
+                <Link to='/' className="btn btn-ghost normal-case text-xl">Awesome Auth</Link>
+                <Link className="btn btn-ghost normal-case text-xl" to='/'>Home</Link>
+                <Link className="btn btn-ghost normal-case text-xl" to='/orders'>Orders</Link>
+                <Link className="btn btn-ghost normal-case text-xl" to='/login'>Log in</Link>
+                <Link className="btn btn-ghost normal-case text-xl" to='/register'>Register</Link>
+                {user?.email && <span>Welcome, {user.email}</span>}
+                {
+                    user?.email ? 
+                    <button onClick={handleSignOut} className="btn btn-sm">Log out</button>
+                    : <Link to='/login'>
+                        <button className='btn btn-sm'>Log In</button>
+                    </Link>
+                }
+
+            </div>
+        </div>
+    );
 };
 
 export default Header;

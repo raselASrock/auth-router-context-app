@@ -1,11 +1,11 @@
-
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
-import Header from './Components/Header';
-import Home from './Components/Home';
-import Login from './Components/Login';
-import Register from './Components/Register';
-import Main from './Layout/Main';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Main from './layout/Main';
+import Home from './components/Home';
+import Login from './components/Login';
+import Register from './components/Register';
+import PrivateRoute from './routes/PrivateRoute';
+import Orders from './components/Orders';
 
 function App() {
   const router = createBrowserRouter([
@@ -15,11 +15,11 @@ function App() {
       children: [
         {
           path: '/',
-          element: <Home></Home>
+          element: <PrivateRoute><Home></Home></PrivateRoute>
         },
         {
-          path: '/header',
-          element: <Header></Header>
+          path: '/orders',
+          element: <PrivateRoute><Orders></Orders></PrivateRoute>
         },
         {
           path: '/login',
@@ -30,8 +30,8 @@ function App() {
           element: <Register></Register>
         }
       ]
-  }
-])
+    }
+  ])
   return (
     <div className="App">
       <RouterProvider router={router}></RouterProvider>
