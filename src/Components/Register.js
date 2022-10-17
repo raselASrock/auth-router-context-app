@@ -22,6 +22,11 @@ const {createUser} = useContext(AuthContext)
       .catch( error => console.error("Error", error))
   };
 
+  const handleGoogleSignIn =() =>{
+    
+  }
+
+
   return (
     <div>
       <div className="hero min-h-screen">
@@ -77,6 +82,7 @@ const {createUser} = useContext(AuthContext)
                 <p className="font-semibold"><small>Already Have An Account? <Link to='/login' className="link link-primary">Login</Link></small></p>
               </div>
             </form>
+            <button onClick={handleGoogleSignIn} className="btn btn-outline btn-success">Google</button>
           </div>
         </div>
       </div>
